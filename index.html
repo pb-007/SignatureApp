@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SignatureApp</title>
+    <script src = "jSignature/jquery.js"></script>
+    <script src = "jSignature/jSignature.min.js"></script>
+    <script src = "jSignature/modernizr.js"></script>
+    <link rel = "stylesheet" href="style.css">
+</head>
+<body id = "body">
+    <h1 style="text-align: center; text-decoration: solid;">Sign Here</h1>
+    <div id="signature" style = "border: 1px solid black;" ></div>
+
+    <button id = "preview" style="color:crimson;">Preview</button>
+    <img src = "" id = "signaturepreview">
+    <a href = "" id = "download" style="color: indianred;" download>Download</a>
+    <script type = "text/javascript">
+        var signature = $('#signature').jSignature({'UndoButton': true});
+
+        $('#preview').click(function(){
+            var data = signature.jSignature('getData', 'image');
+            $('#signaturepreview').attr('src', "data:" + data);
+        });
+
+        $('#download').click(function(){
+            var image = $('#signaturepreview')[0];
+            this.href = image.src;
+
+        });
+
+    </script>
+</body>
+</html>
